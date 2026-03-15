@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Portal</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f4f4f4; }
+        .box { background: white; padding: 20px; margin: 50px auto; width: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .hidden { display: none; }
+        .attendance-dot { height: 20px; width: 20px; border-radius: 50%; display: inline-block; margin: 5px; }
+        .green { background-color: #4CAF50; }
+        .red { background-color: #f44336; }
+    </style>
+</head>
+<body>
+
+    <div id="loginBox" class="box">
+        <h2>School Login</h2>
+        <input type="text" id="user" placeholder="Username"><br><br>
+        <input type="password" id="pass" placeholder="Password"><br><br>
+        <button onclick="checkLogin()">Login</button>
+    </div>
+
+    <div id="dashboard" class="box hidden">
+        <h2 id="welcome"></h2>
+        <h3>Attendance</h3>
+        <span class="attendance-dot green" title="Mon"></span>
+        <span class="attendance-dot green" title="Tue"></span>
+        <span class="attendance-dot red" title="Wed"></span>
+        
+        <h3>Library</h3>
+        <button onclick="alert('Opening Weekly Plan...')">Weekly Plan</button>
+        <button onclick="alert('Opening HW...')">Homework</button>
+        
+        <div id="adminPanel" class="hidden">
+            <hr>
+            <h4>Admin: Adham</h4>
+            <button onclick="alert('File Uploading Feature...')">Upload New Files</button>
+        </div>
+        <br><br>
+        <button onclick="location.reload()">Logout</button>
+    </div>
+
+    <script>
+        function checkLogin() {
+            let user = document.getElementById('user').value;
+            let pass = document.getElementById('pass').value;
+
+            // Logic for your specific request
+            if (user === "Adham" && pass === "125") {
+                document.getElementById('loginBox').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                document.getElementById('adminPanel').classList.remove('hidden');
+                document.getElementById('welcome').innerText = "Welcome, Admin Adham";
+            } else if (user !== "" && pass !== "") {
+                document.getElementById('loginBox').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                document.getElementById('welcome').innerText = "Welcome, Student " + user;
+            } else {
+                alert("Please enter details");
+            }
+        }
+    </script>
+</body>
+</html>
